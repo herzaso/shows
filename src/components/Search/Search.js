@@ -1,32 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Search.css';
+import { searchTitle } from './SearchActions'
 
 const Search = ({ loggedIn, onSearch }) => (
     <div className='container'>
-        <input type="text" className="input" />
-        <button className="button" disabled={loggedIn} onClick={onSearch}>
+        <input type="text" className="input"
+            ref={input => { this.input = input; }} />
+        <button className="button"
+            disabled={loggedIn}
+            onClick={() => onSearch(this.input.value)}>
             Search
         </button>
     </div>
 )
 
-const mapStateToProps = (state) => {
-    return {
-        loggedIn: state.loggedIn
-    }
-}
-
-const mapDispatchToProps = (dispatch) => ({
-    onSearch: searchTitles
-});
-
-const searchTitles = (value) => ({
-    type: "SEARCH_TITLE",
-    value
+const mapStateToProps = (state) => ({
+    loggedIn: state.loggedIn
 })
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {onSearch: searchTitle}
 )(Search);
