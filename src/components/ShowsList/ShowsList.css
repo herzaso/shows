@@ -1,0 +1,28 @@
+.showsList {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 10px;
+}
+
+.card {
+    margin: 10px;
+}
+
+.thumbnail {
+    height: 295px;
+    width: 210px;
+}
+
+.title {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.genres {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: normal;
+}
