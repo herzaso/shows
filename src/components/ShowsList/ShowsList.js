@@ -2,14 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styles from './ShowsList.css'
+import { selectShow } from './ShowsListActions'
 
-const ShowsList = ({ titles }) => {
+const ShowsList = ({ titles, onTitleClick }) => {
     console.log("rendering ShowsList again..............")
     return (
         <div className={styles.container}>
         <div className={styles.showsList}>
             {titles.length ? titles.map(title => (
-                <ShowCard key={title.id} {...title} onTitleClick='' />
+                <ShowCard key={title.id} {...title}
+                    onTitleClick={() => onTitleClick(title)} />
             )) : <span className={styles.error}>Search term must not be void</span>}
         </div>
         </div>
@@ -34,4 +36,7 @@ const ShowCard = (params) => (
     </div>
 )
 
-export default connect(mapStateToProps)(ShowsList)
+export default connect(
+    mapStateToProps,
+    {onTitleClick: selectShow}
+)(ShowsList)

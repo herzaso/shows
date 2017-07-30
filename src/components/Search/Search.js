@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './Search.css';
+import styles from './Search.css';
 import { searchTitle } from './SearchActions'
 
 const Search = ({ loggedIn, onSearch }) => (
-    <div className='container'>
-        <input type="text" className="input"
+    <div className={styles.container}>
+        <input type="text" className={styles.input}
             ref={input => { this.input = input; }} />
-        <button className="button"
+        <button className={styles.button}
             disabled={loggedIn}
             onClick={() => onSearch(this.input.value)}>
             Search

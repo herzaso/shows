@@ -8,6 +8,7 @@ import App from './App';
 import './index.css'
 
 const reducer = (state={}, action) => {
+    console.log(action)
     switch (action.type) {
         case "SEARCH_TITLE":
             const newState = {...state, isRunning: action.isRunning}

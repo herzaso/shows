@@ -1,17 +1,17 @@
 import React from 'react';
 import { toggleLogin } from './LoginActions'
-import './Login.css'
+import styles from './Login.css'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 const Login = ({ loggedIn, toggleLogin }) => (
-    <div className="container">
+    <div className={styles.container}>
         Act as Logged in
-        <label className="switch">
+        <label className={styles.switch}>
             <input type="checkbox"
                 defaultChecked={loggedIn}
                 onChange={toggleLogin} />
-            <span className="slider round"></span>
+            <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
     </div>
 );
