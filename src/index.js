@@ -12,6 +12,7 @@ import './index.css'
 const reducer = (state = {
     isRunning: false,
     loggedIn: true,
+    restricted: false,
     query: '',
     titles: []
 }, action) => {
@@ -19,7 +20,8 @@ const reducer = (state = {
         case "SEARCH_TITLE":
             const newState = {
                 ...state,
-                isRunning: action.isRunning
+                isRunning: action.isRunning,
+                restricted: false
             }
             if (action.isRunning)
                 newState.query = action.value || '';
@@ -30,6 +32,11 @@ const reducer = (state = {
             return {
                 ...state,
                 loggedIn: !state['loggedIn']
+            }
+        case "RESTRICT_ACTION":
+            return {
+                ...state,
+                restricted: !state.loggedIn
             }
         default:
             return state;
