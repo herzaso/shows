@@ -32,7 +32,8 @@ const reducer = (state = {
         case "TOGGLE_LOGIN":
             return {
                 ...state,
-                loggedIn: !state['loggedIn']
+                loggedIn: !state['loggedIn'],
+                restricted: false
             }
         case "RESTRICT_ACTION":
             return {
