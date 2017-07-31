@@ -1,42 +1,43 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styles from './ShowsList.css'
-import { selectShow } from './ShowsListActions'
+import ShowCard from './ShowCard'
 
-const ShowsList = ({ titles, onTitleClick }) => {
-    console.log("rendering ShowsList again..............")
+const onTitleClick = (e, loggedIn) => {
+    if (!loggedIn) {
+        e.preventDefault();
+    }
+}
+
+const ShowsList = ({ titles, loggedIn }) => {
     return (
         <div className={styles.container}>
         <div className={styles.showsList}>
             {titles.length ? titles.map(title => (
-                <ShowCard key={title.id} {...title}
-                    onTitleClick={() => onTitleClick(title)} />
+                <Link key={title.id} className={styles.card} to={"/shows/" + title.id}
+                    onClick={(e) => onTitleClick(e, loggedIn)}>
+                    <ShowCard {...title} />
+                </Link>
             )) : <span className={styles.error}>Search term must not be void</span>}
         </div>
         </div>
     );
 }
 ShowsList.propTypes = {
-    titles: PropTypes.array
+    titles: PropTypes.array,
+    loggedIn: PropTypes.bool
 }
 ShowsList.defaultProps = {
     titles: []
 }
 
 const mapStateToProps = (state) => ({
-    titles: state.titles
+    titles: state.titles,
+    loggedIn: state.loggedIn
 })
 
-const ShowCard = (params) => (
-    <div className={styles.card} onClick={params.onTitleClick}>
-        <img className={styles.thumbnail} src={params.thumbnail} alt={params.name} />
-        <h2 className={styles.title}>{params.name}</h2>
-        <h3 className={styles.genres}>{params.genres.join(', ')}</h3>
-    </div>
-)
-
 export default connect(
-    mapStateToProps,
-    {onTitleClick: selectShow}
+    mapStateToProps
 )(ShowsList)

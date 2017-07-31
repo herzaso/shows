@@ -38,6 +38,11 @@
     margin: 6px 12px 6px 0;
 }
 
+.button:hover {
+    background-color: #dff0d0;
+    color: #1d5100;
+}
+
 .button:disabled {
     border-color: #747474;
     color: #565656;

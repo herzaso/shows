@@ -10,7 +10,7 @@ const Login = ({ loggedIn, toggleLogin }) => (
         <label className={styles.switch}>
             <input type="checkbox"
                 defaultChecked={loggedIn}
-                onChange={toggleLogin} />
+                onClick={toggleLogin} />
             <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
     </div>
@@ -18,9 +18,6 @@ const Login = ({ loggedIn, toggleLogin }) => (
 Login.propTypes = {
     loggedIn: PropTypes.bool,
     toggleLogin: PropTypes.func.isRequired
-}
-Login.defaultProps = {
-    loggedIn: true
 }
 
 const mapStateToProps = (state) => ({

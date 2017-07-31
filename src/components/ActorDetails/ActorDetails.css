@@ -1,0 +1,58 @@
+.container {
+
+}
+
+.twoColumns {
+    column-count: 2;
+    column-gap: 100px;
+}
+
+.image {
+    max-height: 1000px;
+}
+
+.list {
+    display: inline-flex;
+    flex-flow: row wrap;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.card {
+    width: 210px;
+    margin: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.extendedCard {
+    width: 529px;
+    margin: 10px;
+    display: flex;
+}
+
+.thumbnail {
+    height: 295px;
+    width: 210px;
+    background-color: #ccc;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.title {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.genres {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.description {
+    line-height: 1.5
+}

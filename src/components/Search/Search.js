@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import styles from './Search.css';
 import { searchTitle } from './SearchActions'
 
-const Search = ({ loggedIn, onSearch }) => (
+const Search = ({ loggedIn, query, onSearch }) => (
     <div className={styles.container}>
-        <input type="text" className={styles.input}
+        <input type="text" className={styles.input} defaultValue={query}
             ref={input => { this.input = input; }} />
         <button className={styles.button}
-            disabled={loggedIn}
+            disabled={!loggedIn}
             onClick={() => onSearch(this.input.value)}>
             Search
         </button>
@@ -16,7 +16,8 @@ const Search = ({ loggedIn, onSearch }) => (
 )
 
 const mapStateToProps = (state) => ({
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn,
+    query: state.query
 })
 
 export default connect(
