@@ -5,4 +5,8 @@ const loadShow = (id) => {
             error => console.log('An error occured.', error))
 }
 
-export { loadShow }
+const selectActor = (actor) => {
+    return {type: "SELECT_ACTOR", actor}
+}
+
+export { loadShow, selectActor }

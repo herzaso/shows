@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { loadActorShows } from './ActorDetailsActions'
 import ShowCard from './ShowCard'
 import styles from  './ActorDetails.css'
@@ -19,14 +20,14 @@ class ActorDetails extends React.Component {
     }
 
     render() {
-        const actor = this.props.location
-        const shows = this.state.shows
+        const actor = this.props.actor;
+        const shows = this.state.shows;
         return (
             <div className={styles.container}>
                 <div className={styles.twoColumns}>
                     <h2 className={styles.title}>{actor.name}</h2>
                     {actor.image ?
-                        <img className={styles.image} src={actor.image} alt={actor.name} />
+                        <img className={styles.image} src={actor.image ? actor.image.original : null} alt={actor.name} />
                         : ''}
                 </div>
                 <div className={styles.list}>
@@ -39,4 +40,8 @@ class ActorDetails extends React.Component {
     }
 }
 
-export default ActorDetails;
+const mapStateToProps = (state) => ({
+    actor: state.actor
+})
+
+export default connect(mapStateToProps)(ActorDetails);

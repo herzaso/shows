@@ -1,5 +1,7 @@
 import React from 'react'
-import { loadShow } from './ShowDetailsActions'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { loadShow, selectActor } from './ShowDetailsActions'
 import SeasonCard from './SeasonCard'
 import ActorCard from './ActorCard'
 import styles from  './ShowDetails.css'
@@ -37,7 +39,9 @@ class ShowDetails extends React.Component {
                 </div>
                 <div className={styles.list}>
                     { show._embedded ? show._embedded.cast.map(char => (
-                        <ActorCard key={char.character.id} {...char} />
+                        <Link key={char.character.id} to={"/actors/" + char.person.id} onClick={() => this.props.onActorSelected(char.person)}>
+                            <ActorCard {...char} />
+                        </Link>
                     )) : '' }
                 </div>
             </div>
@@ -45,4 +49,4 @@ class ShowDetails extends React.Component {
     }
 }
 
-export default ShowDetails;
+export default connect(null, {onActorSelected: selectActor})(ShowDetails);

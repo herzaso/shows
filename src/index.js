@@ -14,7 +14,8 @@ const reducer = (state = {
     loggedIn: true,
     restricted: false,
     query: '',
-    titles: []
+    titles: [],
+    actor: {}
 }, action) => {
     switch (action.type) {
         case "SEARCH_TITLE":
@@ -37,6 +38,11 @@ const reducer = (state = {
             return {
                 ...state,
                 restricted: !state.loggedIn
+            }
+        case "SELECT_ACTOR":
+            return {
+                ...state,
+                actor: action.actor
             }
         default:
             return state;
